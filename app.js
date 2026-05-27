@@ -20,8 +20,8 @@ const app = express();
 
 const allowedCors = [
   'https://skylens.adventphoto.com',
-  'http://www.skylens.adventphoto.com',
-  'http://api.skylens.adventphoto.com',
+  'https://www.skylens.adventphoto.com',
+  'https://api.skylens.adventphoto.com',
 ];
 
 app.use(cors({
