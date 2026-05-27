@@ -18,7 +18,15 @@ mongoose.connect(MONGO_URI)
 
 const app = express();
 
-app.use(cors());
+const allowedCors = [
+  'https://skylens.adventphoto.com',
+  'http://www.skylens.adventphoto.com',
+  'http://api.skylens.adventphoto.com',
+];
+
+app.use(cors({
+  origin: allowedCors,
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(requestLogger);
