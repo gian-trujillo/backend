@@ -3,11 +3,13 @@ const express = require('express');
 const { errors } = require('celebrate');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 const authRoutes = require('./routes/authRoutes');
 const galleryRoutes = require('./routes/galleryRoutes');
 const packageRoutes = require('./routes/packageRoutes');
 const contactRoutes = require('./routes/contactRoutes');
 const filmRoutes = require('./routes/filmRoutes');
+const promotionRoutes = require('./routes/promotionRoutes');
 const { requestLogger, errorLogger } = require('./middleware/logger');
 
 const { MONGO_URI = 'mongodb://localhost:27017/photowebsite' } = process.env;
@@ -35,11 +37,14 @@ app.use(express.json({ limit: '100mb' }));
 app.use(express.urlencoded({ extended: true, limit: '100mb' }));
 app.use(requestLogger);
 
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 app.use('/auth', authRoutes);
 app.use('/gallery', galleryRoutes);
 app.use('/packages', packageRoutes);
 app.use('/contact', contactRoutes);
 app.use('/films', filmRoutes);
+app.use('/promotions', promotionRoutes);
 
 app.use(errorLogger);
 
