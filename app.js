@@ -21,6 +21,8 @@ mongoose.connect(MONGO_URI)
 const app = express();
 
 const allowedCors = [
+  'https://skylensadventures.com',
+  'https://www.skylensadventures.com',
   'https://skylens.adventphoto.com',
   'https://www.skylens.adventphoto.com',
 ];
