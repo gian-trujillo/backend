@@ -28,7 +28,13 @@ const allowedCors = [
 ];
 
 const corsOptions = {
-  origin: allowedCors,
+  origin: (origin, callback) => {
+    if (!origin || allowedCors.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
