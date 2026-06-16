@@ -25,6 +25,8 @@ const allowedCors = [
   'https://www.skylensadventures.com',
   'https://skylens.adventphoto.com',
   'https://www.skylens.adventphoto.com',
+  'http://localhost:5173',
+  'http://localhost:4173',
 ];
 
 const corsOptions = {
